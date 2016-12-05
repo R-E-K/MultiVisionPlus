@@ -1,0 +1,23 @@
+{
+  "name": "multivision",
+  "description": "Extreme Tech Training App (Pluralsight course)",
+  "main": "index.js",
+  "authors": [
+    "REK"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "pluralsight",
+    "demo",
+    "app"
+  ],
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "toastr": "^2.1.3",
+    "angular": "^1.5.9",
+    "angular-resource": "^1.5.9",
+    "angular-route": "^1.5.9"
+  }
+}

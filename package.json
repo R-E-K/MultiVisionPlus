@@ -14,7 +14,12 @@
   "author": "REK",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "jade": "^1.11.0"
+    "jade": "^1.11.0",
+    "mongodb": "^2.2.12",
+    "mongoose": "^4.7.1",
+    "morgan": "^1.7.0",
+    "stylus": "^0.54.5"
   }
 }
