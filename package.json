@@ -11,6 +11,10 @@
     "demo",
     "app"
   ],
+  "engines": {
+    "node": "7.2.x",
+    "npm": "4.0.x"
+  },
   "author": "REK",
   "license": "ISC",
   "dependencies": {
