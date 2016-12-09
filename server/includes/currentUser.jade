@@ -1,0 +1,6 @@
+// Ici, on passe l'objet serveur "req.user" à un objet client "bootstrappedUserObject"
+// Comme ça, Angular connaît le user actuellement authentifié
+// Sinon, Angular agira comme n'ayant pas de user authentifié à chaque chargement de page
+if !!bootstrappedUser
+    script.
+        window.bootstrappedUserObject = !{JSON.stringify(bootstrappedUser)}
