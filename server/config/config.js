@@ -7,7 +7,7 @@ module.exports = {
         port: process.env.PORT || 3030
     },
     production: {
-        db: process.env.PROD_MONGODB,
+        db: process.env.MONGODB_URI,
         rootPath: rootPath,
         port: process.env.PORT || 80
     }
