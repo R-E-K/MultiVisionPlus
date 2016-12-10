@@ -36,6 +36,23 @@ angular.module('app')
                 return dfd.promise;
             },
 
+            updateCurrentUser: function(newUserData) {
+                var dfd = $q.defer();
+
+                // On update pas "currentUser" tant que la sauvegarde n'est pas entièrement correcte
+                // On travaille donc avec une copie pendant la sauvegarde
+                var clone = angular.copy(mvIdentity.currentUser);
+                angular.extend(clone, newUserData);
+                clone.$update().then(function() {
+                    mvIdentity.currentUser = clone;
+                    dfd.resolve();
+                }, function(response) {
+                    dfd.reject(response.data.reason);
+                });
+
+                return dfd.promise;
+            },
+
             logoutUser: function() {
                 var dfd = $q.defer();
                 $http.post('/logout', {
@@ -50,6 +67,14 @@ angular.module('app')
 
             authorizeCurrentUserForRoute: function(role) {
                 if (mvIdentity.isAuthorized(role)) {
+                    return true;
+                } else {
+                    return $q.reject('not authorized');
+                }
+            },
+
+            authorizeAuthenticatedUserForRoute: function() {
+                if (mvIdentity.isAuthenticated()) {
                     return true;
                 } else {
                     return $q.reject('not authorized');

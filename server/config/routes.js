@@ -8,6 +8,7 @@ module.exports = function(app) {
 
     app.get('/api/users', auth.requiresRole('admin'), users.getUsers);
     app.post('/api/users', users.createUser);
+    app.put('/api/users', users.updateUser);
 
     app.get('/partials/*', function(req, res) {
         // Le premier paramètre est égal à ce qu'il y a à la place de l'astérisque
