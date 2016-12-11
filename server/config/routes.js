@@ -12,6 +12,7 @@ module.exports = function(app) {
     app.put('/api/users', users.updateUser);
 
     app.get('/api/courses', courses.getCourses);
+    app.get('/api/courses/:id', courses.getCourseById);
 
     app.get('/partials/*', function(req, res) {
         // Le premier paramètre est égal à ce qu'il y a à la place de l'astérisque

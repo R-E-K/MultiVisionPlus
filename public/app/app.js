@@ -47,6 +47,12 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
             templateUrl: '/partials/courses/course-list',
             controller: 'mvCourseListCtrl'
         });
+
+    $routeProvider.when('/courses/:id',
+        {
+            templateUrl: '/partials/courses/course-details',
+            controller: 'mvCourseDetailCtrl'
+        });
 });
 
 angular.module('app').run(function($rootScope, $location) {

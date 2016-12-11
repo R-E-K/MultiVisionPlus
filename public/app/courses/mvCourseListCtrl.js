@@ -1,5 +1,18 @@
 angular.module('app')
-    .controller('mvCourseListCtrl', function($scope, mvCourse) {
+    .controller('mvCourseListCtrl', function($scope, mvCachedCourses) {
 
-        $scope.courses = mvCourse.query();
+        $scope.courses = mvCachedCourses.query();
+
+        $scope.sortOptions = [
+            {
+                value: "title",
+                text: "Sort by title"
+            },
+            {
+                value: "published",
+                text: "Sort by publish date"
+            }
+        ];
+
+        $scope.sortOrder = $scope.sortOptions[0].value;
 });

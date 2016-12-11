@@ -31,7 +31,7 @@ exports.createDefaultCourses = function() {
             Course.create({
                 title: 'Course 2',
                 featured: false,
-                published: new Date('30/11/2015'),
+                published: new Date('11/30/2015'),
                 tags: ['NodeJs', "Express"]
             });
         }
