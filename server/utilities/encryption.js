@@ -1,13 +1,18 @@
-var crypto = require('crypto');
+(function() {
+    'use strict';
 
-exports.createSalt = function() {
-    return crypto.randomBytes(128).toString('base64');
-};
+    var crypto = require('crypto');
 
-exports.hashPwd = function(salt, pwd) {
-    var hmac = crypto.createHmac('sha1', salt);
-    hmac.setEncoding('hex');
-    hmac.write(pwd);
-    hmac.end();
-    return hmac.read();
-};
+    exports.createSalt = function () {
+        return crypto.randomBytes(128).toString('base64');
+    };
+
+    exports.hashPwd = function (salt, pwd) {
+        var hmac = crypto.createHmac('sha1', salt);
+        hmac.setEncoding('hex');
+        hmac.write(pwd);
+        hmac.end();
+        return hmac.read();
+    };
+
+})();

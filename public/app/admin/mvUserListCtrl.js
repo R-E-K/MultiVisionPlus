@@ -1,5 +1,9 @@
-angular.module('app')
-    .controller('mvUserListCtrl', function($scope, mvUser) {
+(function() {
+    'use strict';
 
-        $scope.users = mvUser.query();
-});
+    angular.module('app')
+        .controller('mvUserListCtrl', function ($scope, mvUser) {
+
+            $scope.users = mvUser.query();
+        });
+})();

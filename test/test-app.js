@@ -1,3 +1,8 @@
-angular.module('app', ['ngResource']);
+(function() {
+    'use strict';
 
-var toastr = {};
+    angular.module('app', ['ngResource']);
+
+    var toastr = {};
+
+})();

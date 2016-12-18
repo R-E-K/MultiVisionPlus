@@ -1,26 +1,30 @@
-angular.module('app')
-    .controller('mvProfileCtrl', function($scope, mvAuth, mvIdentity, mvNotifier) {
+(function() {
+    'use strict';
 
-        $scope.email = mvIdentity.currentUser.username;
-        $scope.fname = mvIdentity.currentUser.firstName;
-        $scope.lname = mvIdentity.currentUser.lastName;
+    angular.module('app')
+        .controller('mvProfileCtrl', function ($scope, mvAuth, mvIdentity, mvNotifier) {
 
-        $scope.update = function() {
-            var newUserData = {
-                username: $scope.email,
-                firstName: $scope.fname,
-                lastName: $scope.lname
+            $scope.email = mvIdentity.currentUser.username;
+            $scope.fname = mvIdentity.currentUser.firstName;
+            $scope.lname = mvIdentity.currentUser.lastName;
+
+            $scope.update = function () {
+                var newUserData = {
+                    username: $scope.email,
+                    firstName: $scope.fname,
+                    lastName: $scope.lname
+                };
+
+                // Si l'utilisateur a rentré un nouveau mot de passe
+                if ($scope.password && $scope.password.length > 0) {
+                    newUserData.password = $scope.password;
+                }
+
+                mvAuth.updateCurrentUser(newUserData).then(function () {
+                    mvNotifier.notify('Your account has been updated');
+                }, function (reason) {
+                    mvNotifier.error(reason);
+                });
             };
-
-            // Si l'utilisateur a rentré un nouveau mot de passe
-            if ($scope.password && $scope.password.length > 0) {
-                newUserData.password = $scope.password;
-            }
-
-            mvAuth.updateCurrentUser(newUserData).then(function() {
-                mvNotifier.notify('Your account has been updated');
-            }, function(reason) {
-                mvNotifier.error(reason);
-            });
-        };
-});
+        });
+})();

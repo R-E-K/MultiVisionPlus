@@ -1,6 +1,10 @@
-angular.module('app')
-    .controller('mvMainCtrl', function($scope, mvCachedCourses) {
+(function() {
+    'use strict';
 
-        // On utilise le cache plutôt que de requêter à chaque fois
-        $scope.courses = mvCachedCourses.query();
-});
+    angular.module('app')
+        .controller('mvMainCtrl', function ($scope, mvCachedCourses) {
+
+            // On utilise le cache plutôt que de requêter à chaque fois
+            $scope.courses = mvCachedCourses.query();
+        });
+})();

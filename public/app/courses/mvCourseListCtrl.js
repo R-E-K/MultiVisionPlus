@@ -1,18 +1,22 @@
-angular.module('app')
-    .controller('mvCourseListCtrl', function($scope, mvCachedCourses) {
+(function() {
+    'use strict';
 
-        $scope.courses = mvCachedCourses.query();
+    angular.module('app')
+        .controller('mvCourseListCtrl', function ($scope, mvCachedCourses) {
 
-        $scope.sortOptions = [
-            {
-                value: "title",
-                text: "Sort by title"
-            },
-            {
-                value: "published",
-                text: "Sort by publish date"
-            }
-        ];
+            $scope.courses = mvCachedCourses.query();
 
-        $scope.sortOrder = $scope.sortOptions[0].value;
-});
+            $scope.sortOptions = [
+                {
+                    value: "title",
+                    text: "Sort by title"
+                },
+                {
+                    value: "published",
+                    text: "Sort by publish date"
+                }
+            ];
+
+            $scope.sortOrder = $scope.sortOptions[0].value;
+        });
+})();
