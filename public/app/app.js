@@ -42,39 +42,45 @@
         $routeProvider.when('/',
             {
                 templateUrl: '/partials/main/main',
-                controller: 'mvMainCtrl'
+                controller: 'mvMainCtrl',
+                controllerAs: 'mainCtrl'
             });
 
         $routeProvider.when('/admin/users',
             {
                 templateUrl: '/partials/admin/user-list',
                 controller: 'mvUserListCtrl',
+                controllerAs: 'userListCtrl',
                 resolve: routeRoleChecks.admin
             });
 
         $routeProvider.when('/signup',
             {
                 templateUrl: '/partials/account/signup',
-                controller: 'mvSignupCtrl'
+                controller: 'mvSignupCtrl',
+                controllerAs: 'signupCtrl'
             });
 
         $routeProvider.when('/profile',
             {
                 templateUrl: '/partials/account/profile',
                 controller: 'mvProfileCtrl',
+                controllerAs: 'profileCtrl',
                 resolve: routeRoleChecks.user
             });
 
         $routeProvider.when('/courses',
             {
                 templateUrl: '/partials/courses/course-list',
-                controller: 'mvCourseListCtrl'
+                controller: 'mvCourseListCtrl',
+                controllerAs: 'courseListCtrl'
             });
 
         $routeProvider.when('/courses/:id',
             {
                 templateUrl: '/partials/courses/course-details',
-                controller: 'mvCourseDetailCtrl'
+                controller: 'mvCourseDetailCtrl',
+                controllerAs: 'courseDetailCtrl'
             });
     });
 

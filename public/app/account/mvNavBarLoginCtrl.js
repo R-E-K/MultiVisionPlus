@@ -4,9 +4,11 @@
     angular.module('app')
         .controller('mvNavBarLoginCtrl', function ($scope, $http, mvNotifier, mvIdentity, mvAuth, $location) {
 
-            $scope.identity = mvIdentity;
+            var vm = this;
 
-            $scope.signin = function (username, password) {
+            vm.identity = mvIdentity;
+
+            vm.signin = function (username, password) {
                 mvAuth.authenticateUser(username, password)
                     .then(function (success) {
                         if (success) {
@@ -18,7 +20,7 @@
                     });
             };
 
-            $scope.signout = function () {
+            vm.signout = function () {
                 mvAuth.logoutUser().then(function () {
                     $scope.username = "";
                     $scope.password = "";

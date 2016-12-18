@@ -4,7 +4,9 @@
     angular.module('app')
         .controller('mvMainCtrl', function ($scope, mvCachedCourses) {
 
+            var vm = this;
+
             // On utilise le cache plutôt que de requêter à chaque fois
-            $scope.courses = mvCachedCourses.query();
+            vm.courses = mvCachedCourses.query();
         });
 })();

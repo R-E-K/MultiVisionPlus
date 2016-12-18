@@ -2,16 +2,16 @@
     .pull-right
         .form.form-inline
             .form-group
-                input.form-control(ng-model="searchText", placeholder="Filter")
+                input.form-control(ng-model="courseListCtrl.searchText", placeholder="Filter")
             .form-group.margin-left-med
-                select.form-control(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
+                select.form-control(ng-model="courseListCtrl.sortOrder", ng-options="item.value as item.text for item in courseListCtrl.sortOptions")
     table.table.table-hover.table-striped.table-condensed
         thead
             tr
                 th Title
                 th Publish Date
         tbody
-            tr(ng-repeat="course in courses | filter: searchText | orderBy: sortOrder")
+            tr(ng-repeat="course in courseListCtrl.courses | filter: courseListCtrl.searchText | orderBy: courseListCtrl.sortOrder")
                 td
                     a(href="/courses/{{course._id}}") {{course.title}}
                 td {{course.published | date}}

@@ -4,20 +4,22 @@
     angular.module('app')
         .controller('mvProfileCtrl', function ($scope, mvAuth, mvIdentity, mvNotifier) {
 
-            $scope.email = mvIdentity.currentUser.username;
-            $scope.fname = mvIdentity.currentUser.firstName;
-            $scope.lname = mvIdentity.currentUser.lastName;
+            var vm = this;
 
-            $scope.update = function () {
+            vm.email = mvIdentity.currentUser.username;
+            vm.fname = mvIdentity.currentUser.firstName;
+            vm.lname = mvIdentity.currentUser.lastName;
+
+            vm.update = function () {
                 var newUserData = {
-                    username: $scope.email,
-                    firstName: $scope.fname,
-                    lastName: $scope.lname
+                    username: vm.email,
+                    firstName: vm.fname,
+                    lastName: vm.lname
                 };
 
                 // Si l'utilisateur a rentré un nouveau mot de passe
-                if ($scope.password && $scope.password.length > 0) {
-                    newUserData.password = $scope.password;
+                if (vm.password && vm.password.length > 0) {
+                    newUserData.password = vm.password;
                 }
 
                 mvAuth.updateCurrentUser(newUserData).then(function () {

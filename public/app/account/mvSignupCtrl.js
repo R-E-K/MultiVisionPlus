@@ -4,12 +4,14 @@
     angular.module('app')
         .controller('mvSignupCtrl', function ($scope, mvUser, mvNotifier, $location, mvAuth) {
 
-            $scope.signup = function () {
+            var vm = this;
+
+            vm.signup = function () {
                 var newUserData = {
-                    username: $scope.email,
-                    password: $scope.password,
-                    firstName: $scope.fname,
-                    lastName: $scope.lname
+                    username: vm.email,
+                    password: vm.password,
+                    firstName: vm.fname,
+                    lastName: vm.lname
                 };
 
                 mvAuth.createUser(newUserData).then(function () {

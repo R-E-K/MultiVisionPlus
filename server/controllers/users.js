@@ -50,9 +50,13 @@
         req.user.lastName = userUpdates.lastName;
         req.user.username = userUpdates.username;
 
+        if (userUpdates.password) {
+            req.user.password = userUpdates.password;
+        }
+
         if (req.user.password && req.user.password.length > 0) {
             req.user.salt = encrypt.createSalt();
-            req.user.hashed_pwd = encrypt.hashPwd(req.user.salt, userUpdates.password);
+            req.user.hashed_pwd = encrypt.hashPwd(req.user.salt, req.user.password);
         }
 
         req.user.save(function (err) {

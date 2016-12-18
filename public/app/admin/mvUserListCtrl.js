@@ -4,6 +4,8 @@
     angular.module('app')
         .controller('mvUserListCtrl', function ($scope, mvUser) {
 
-            $scope.users = mvUser.query();
+            var vm = this;
+
+            vm.users = mvUser.query();
         });
 })();

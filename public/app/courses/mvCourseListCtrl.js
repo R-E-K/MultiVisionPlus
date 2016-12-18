@@ -4,9 +4,11 @@
     angular.module('app')
         .controller('mvCourseListCtrl', function ($scope, mvCachedCourses) {
 
-            $scope.courses = mvCachedCourses.query();
+            var vm = this;
 
-            $scope.sortOptions = [
+            vm.courses = mvCachedCourses.query();
+
+            vm.sortOptions = [
                 {
                     value: "title",
                     text: "Sort by title"
@@ -17,6 +19,6 @@
                 }
             ];
 
-            $scope.sortOrder = $scope.sortOptions[0].value;
+            vm.sortOrder = vm.sortOptions[0].value;
         });
 })();
