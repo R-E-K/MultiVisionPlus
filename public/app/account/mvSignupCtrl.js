@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app')
-        .controller('mvSignupCtrl', function ($scope, mvUser, mvNotifier, $location, mvAuth) {
+        .controller('mvSignupCtrl', function ($scope, mvUser, mvNotifier, $location, mvAuth, mvUserManager) {
 
             var vm = this;
 
@@ -14,7 +14,7 @@
                     lastName: vm.lname
                 };
 
-                mvAuth.createUser(newUserData).then(function () {
+                mvUserManager.createUser(newUserData).then(function () {
                     mvNotifier.notify('User account created');
                     $location.path('/');
                 }, function (reason) {

@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app')
-        .controller('mvProfileCtrl', function ($scope, mvAuth, mvIdentity, mvNotifier) {
+        .controller('mvProfileCtrl', function ($scope, mvUserManager, mvIdentity, mvNotifier) {
 
             var vm = this;
 
@@ -22,7 +22,7 @@
                     newUserData.password = vm.password;
                 }
 
-                mvAuth.updateCurrentUser(newUserData).then(function () {
+                mvUserManager.updateCurrentUser(newUserData).then(function () {
                     mvNotifier.notify('Your account has been updated');
                 }, function (reason) {
                     mvNotifier.error(reason);
