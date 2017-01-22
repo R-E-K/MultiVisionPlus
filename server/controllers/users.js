@@ -4,6 +4,7 @@
     var mongoose = require('mongoose');
     var User = mongoose.model('User');
     var encrypt = require('../utilities/encryption');
+    var enums = require('../config/enums');
 
     exports.getUsers = function (req, res) {
         User.find().exec(function (err, collection) {
@@ -41,7 +42,7 @@
     exports.updateUser = function (req, res) {
         var userUpdates = req.body;
 
-        if (req.user._id != userUpdates._id && req.user.hasRole("admin")) {
+        if (req.user._id != userUpdates._id && req.user.hasRole(enums.userRolesEnum.admin)) {
             res.status(403);
             return res.end();
         }

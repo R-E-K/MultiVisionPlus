@@ -40,7 +40,7 @@
 
     var User = mongoose.model('User', userSchema);
 
-    exports.createDefaultUsers = function () {
+    exports.createDefaultUsers = function (userRolesEnum) {
         User.find({}).exec(function (err, collection) {
             if (collection.length === 0) {
                 var salt, hash;
@@ -53,7 +53,7 @@
                     username: 'joe',
                     salt: salt,
                     hashed_pwd: hash,
-                    roles: ['admin']
+                    roles: [userRolesEnum.admin]
                 });
 
                 salt = encrypt.createSalt();
@@ -64,7 +64,7 @@
                     username: 'john',
                     salt: salt,
                     hashed_pwd: hash,
-                    roles: []
+                    roles: [userRolesEnum.editor, userRolesEnum.reader]
                 });
 
                 salt = encrypt.createSalt();

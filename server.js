@@ -11,10 +11,12 @@
 
     var config = require('./server/config/config')[env];
 
+    var enums = require('./server/config/enums');
+
     require('./server/config/express')(app, config);
     require('./server/config/mongoose')(config);
     require('./server/config/passport')();
-    require('./server/config/routes')(app);
+    require('./server/config/routes')(app, enums);
 
 
     app.listen(config.port);

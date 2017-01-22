@@ -8,9 +8,9 @@
 
     var User = mongoose.model('User');
 
-    module.exports = function (app) {
+    module.exports = function (app, enums) {
 
-        app.get('/api/users', auth.requiresRole('admin'), users.getUsers);
+        app.get('/api/users', auth.requiresRole(enums.userRolesEnum.admin), users.getUsers);
         app.post('/api/users', users.createUser);
         app.put('/api/users', users.updateUser);
 

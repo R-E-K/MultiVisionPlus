@@ -5,6 +5,7 @@
     var userModel = require('../models/User');
     var courseModel = require('../models/Course');
     var bluebird = require('bluebird');
+    var userRolesEnum = require('../config/enums').userRolesEnum;
 
     module.exports = function (config) {
         mongoose.connect(config.db, config.options);
@@ -18,7 +19,7 @@
 
         // Création de données de départ
         // (Histoire de ne pas avoir une application vide de contenu)
-        userModel.createDefaultUsers();
+        userModel.createDefaultUsers(userRolesEnum);
         courseModel.createDefaultCourses();
 
     };
