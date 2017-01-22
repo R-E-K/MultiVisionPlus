@@ -8,8 +8,8 @@
                         .col-md-10
                             div(ng-repeat="role in updateUserRolesCtrl.roles")
                                 p
-                                    input(type="checkbox", name="{{role}}")
-                                    | {{role}}
+                                    input(type="checkbox", name="{{role.name}}", ng-model="role.checked")
+                                    | {{role.name}}
                     .form-group
                         .col-md-10.col-md-offset-2
                             .pull-right

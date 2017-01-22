@@ -84,4 +84,18 @@
         });
     };
 
+    exports.updateUserRole = function (req, res) {
+        var userUpdates = req.body;
+
+        User.update({
+            _id: req.params.id
+        },{
+            $set: {
+                roles: userUpdates.roles
+            }
+        }).exec(function(err) {
+            res.send(err);
+        });
+    };
+
 })();
