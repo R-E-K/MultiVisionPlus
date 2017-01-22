@@ -54,6 +54,14 @@
                 resolve: routeRoleChecks.admin
             });
 
+        $routeProvider.when('/admin/update-user-roles/:id',
+            {
+                templateUrl: '/partials/admin/update-user-roles',
+                controller: 'mvUpdateUserRolesCtrl',
+                controllerAs: 'updateUserRolesCtrl',
+                resolve: routeRoleChecks.admin
+            });
+
         $routeProvider.when('/signup',
             {
                 templateUrl: '/partials/account/signup',

@@ -1,0 +1,18 @@
+.container
+    .wall
+        form.form-horizontal(name="profileForm")
+            fieldset
+                legend User role - {{updateUserRolesCtrl.user.firstName}} {{updateUserRolesCtrl.user.lastName}}
+                    .form-group
+                        label.col-md-2.control-label Roles
+                        .col-md-10
+                            div(ng-repeat="role in updateUserRolesCtrl.roles")
+                                p
+                                    input(type="checkbox", name="{{role}}")
+                                    | {{role}}
+                    .form-group
+                        .col-md-10.col-md-offset-2
+                            .pull-right
+                                button.btn.btn-primary(ng-click="updateUserRolesCtrl.update()", ng-disabled="profileForm.$invalid") Submit
+                                | &nbsp;
+                                a.btn.btn-default("/") Cancel

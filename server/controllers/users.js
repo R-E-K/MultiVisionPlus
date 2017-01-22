@@ -12,11 +12,22 @@
         });
     };
 
+    exports.getUserById = function (req, res) {
+        User.findOne({
+            _id: req.params.id
+        }).exec(function (err, user) {
+            res.send(user);
+        });
+    };
+
     exports.createUser = function (req, res, next) {
         var userData = req.body;
         userData.username = userData.username.toLowerCase();
         userData.salt = encrypt.createSalt();
         userData.hashed_pwd = encrypt.hashPwd(userData.salt, userData.password);
+        // Un utilisateur n'a que le droit de lecture par défaut
+        userData.roles = [enums.userRolesEnum.reader];
+
         User.create(userData, function (err, user) {
             if (err) {
                 // Si un autre utilisateur à déjà le même username
@@ -51,6 +62,7 @@
         req.user.lastName = userUpdates.lastName;
         req.user.username = userUpdates.username;
 
+        // Mot de passe
         if (userUpdates.password) {
             req.user.password = userUpdates.password;
         }
