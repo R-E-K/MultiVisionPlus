@@ -98,4 +98,13 @@
         });
     };
 
+    exports.deleteUser = function(req, res) {
+        var idUser = req.params.id;
+
+        User.findByIdAndRemove(idUser).exec(function(error) {
+            res.send(error);
+        });
+
+    };
+
 })();

@@ -14,8 +14,9 @@
         app.get('/api/users/:id', auth.requiresRole(enums.userRolesEnum.admin), users.getUserById);
         app.post('/api/users', users.createUser);
         app.put('/api/users', users.updateUser);
+        app.delete('/api/users/:id', auth.requiresRole(enums.userRolesEnum.admin), users.deleteUser);
 
-        app.put('/api/user-roles/:id', users.updateUserRole);
+        app.put('/api/user-roles/:id', auth.requiresRole(enums.userRolesEnum.admin), users.updateUserRole);
 
         app.get('/api/courses', courses.getCourses);
         app.get('/api/courses/:id', courses.getCourseById);
