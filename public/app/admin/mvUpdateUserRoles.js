@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app')
-        .controller('mvUpdateUserRolesCtrl', function ($scope, $http, $routeParams, mvUser, userRolesEnum, mvNotifier) {
+        .controller('mvUpdateUserRolesCtrl', function ($scope, $routeParams, AdminUserService, mvUser, userRolesEnum, mvNotifier) {
 
             var vm = this;
             vm.user = {};
@@ -41,10 +41,8 @@
                     }
                 });
 
-                // TODO : Refactoriser avec un Provider
-                $http.put("/api/user-roles/" + $routeParams.id, {
-                    roles: checkedRoles
-                }).then(function(success) {
+                AdminUserService.updateUserRoles($routeParams.id, checkedRoles)
+                    .then(function(success) {
                     mvNotifier.notify("Roles updated");
                 }, function(error) {
                     mvNotifier.error(error);
