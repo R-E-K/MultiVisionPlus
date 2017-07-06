@@ -6,8 +6,12 @@
     var encrypt = require('../utilities/encryption');
     var enums = require('../config/enums');
 
+    // On ne projette que le prénom et le nom
     exports.getUsers = function (req, res) {
-        User.find().exec(function (err, collection) {
+        User.find({}, {
+            firstName: 1,
+            lastName: 1
+        }).exec(function (err, collection) {
             res.send(collection);
         });
     };

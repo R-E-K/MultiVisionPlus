@@ -20,6 +20,9 @@
 
         app.get('/api/courses', courses.getCourses);
         app.get('/api/courses/:id', courses.getCourseById);
+        app.post('/api/courses', courses.createCourse);
+        app.put('/api/courses/:id', courses.updateCourse);
+        app.delete('/api/courses/:id', courses.deleteCourse);
 
         app.get('/partials/*', function (req, res) {
             // Le premier paramètre est égal à ce qu'il y a à la place de l'astérisque
